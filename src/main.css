@@ -1,0 +1,63 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+  
+nav {
+    padding: 30px;
+}
+
+.navitem {
+    /* border: 1px solid white; */
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    &:hover {
+        opacity: .9;
+    }
+}
+
+nav a {
+    font-weight: bold;
+    /* color: #2c3e50; */
+    color: white;
+}
+  
+nav a.router-link-exact-active {
+    color: #42b983;
+}
+
+
+/* // Устройства Small (телефоны с горизонтальной ориентацией, 576 пикселей и выше)
+@media (min-width: 576px) and (max-width: 767px) {
+    
+} */
+
+/* // Устройства Medium (планшеты, 768 пикселей и выше)
+@media (min-width: 768px) and (max-width: 991px) {
+    
+} */
+
+/* // Устройства Large (настольные компьютеры, 992 пикселей и выше)
+@media (min-width: 992px) and (max-width: 1199px) {
+    
+} */
+
+/* // Устройства X-Large (большие настольные компьютеры, 1200 пикселей и выше)
+@media (min-width: 1200px) and (max-width: 1399px) {
+    
+} */
+
+/* // Устройства XX-Large (большие настольные компьютеры, 1400 пикселей и выше)
+@media (min-width: 1400px) {
+
+} */

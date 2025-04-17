@@ -1,0 +1,62 @@
+.homearea {
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.116);
+    color: black;
+    padding: .5rem 1rem;
+}
+
+.homearea h2 {
+    text-align: left;
+    font-weight: 900;
+    color: white;
+    border-left: 2px solid white;
+    margin-left: .5rem;
+}
+
+.areaelem {
+    min-height: 60px;
+    max-height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aquamarine;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Устройства Small (телефоны с горизонтальной ориентацией, 576 пикселей и выше) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .areaelem {
+        min-width: 95%;
+        max-width: 95%; }
+}
+
+/* // Устройства Medium (планшеты, 768 пикселей и выше) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .areaelem {
+        min-width: 45%;
+        max-width: 45%; }    
+}
+
+/* // Устройства Large (настольные компьютеры, 992 пикселей и выше) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .areaelem {
+        min-width: 30%;
+        max-width: 30%; }
+}
+
+/* // Устройства X-Large (большие настольные компьютеры, 1200 пикселей и выше) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .areaelem {
+        min-width: 30%;
+        max-width: 30%; }    
+}
+
+/* // Устройства XX-Large (большие настольные компьютеры, 1400 пикселей и выше) */
+@media (min-width: 1400px) {
+    .areaelem {
+        min-width: 30%;
+        max-width: 30%; }
+}
