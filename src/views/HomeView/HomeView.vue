@@ -7,6 +7,29 @@
 
 export default {
     name: 'HomeView',
+    data() {
+        return {
+            areaData: [
+                {
+                    title: "Helpers",
+                    elements: [
+                        { title: "Counters", rlink: "/counters" },
+                        { title: "Tablets", rlink: "/tablets" },
+                    ]
+                },
+                {
+                    title: "GBase",
+                    elements: []
+                },
+                {
+                    title: "Rules",
+                    elements: [
+                        { title: "Rules", rlink: "/rules" },
+                    ]
+                },
+            ],
+        }
+    }
     // components: {
     //     HelloWorld
     // }

@@ -12,17 +12,18 @@
 }
   
 nav {
-    padding: 30px;
+    padding: 1rem;
 }
 
-.navitem {
-    /* border: 1px solid white; */
+.navitem_m {
+    border: 1px solid white;
     border-radius: 5px;
     padding: 5px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: .5rem;
+    margin-right: .5rem;
     &:hover {
         opacity: .9;
+        border: 1px solid #42b983;
     }
 }
 

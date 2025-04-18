@@ -1,19 +1,9 @@
-<div class="container homearea">
+<div v-for="ADElem in areaData" class="container homearea">
     <div class="row">
-        <h2>Helpers</h2>
-        <router-link class="navitem" to="/counter">
-            <div class="col areaelem">
-                <h3>Counters</h3>
-            </div>
-        </router-link>
-    </div>
-</div>
-<div class="container homearea">
-    <div class="row">
-        <h2>Rules</h2>
-        <router-link class="navitem" to="/counter">
-            <div class="col areaelem">
-                <h3>Counters</h3>
+        <h2>{{ADElem.title}}</h2>
+        <router-link v-for="VElem in ADElem.elements" class="col areaelem" :to="VElem.rlink">
+            <div>
+                <h3>{{VElem.title}}</h3>
             </div>
         </router-link>
     </div>
