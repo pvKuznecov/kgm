@@ -1,67 +1,130 @@
-let MDB = {};
-// let openRequest = indexedDB.open('MDB', 1);
+const DBVersion = 1;
+const DBName = 'MDB';
 
-// Удалить базу данных:
-let deleteRequest = indexedDB.deleteDatabase('MDB');
-deleteRequest.onsuccess/onerror /*отслеживает результат*/
+class mdb {
+    constructor() {
+        this.version = DBVersion
+    }
 
-// openRequest.onupgradeneeded = function(event) {
-//     // версия существующей базы данных меньше 2 (или база данных не существует)
-//     MDB = openRequest.result;
-//     console.log('event', event);
-//     switch(event.oldVersion) { // существующая (старая) версия базы данных
-//         case 0:
-//             // версия 0 означает, что на клиенте нет базы данных
-//             // выполнить инициализацию
-//             MDB.createObjectStore('counter');
+    starter() {
+        let openRequest = indexedDB.open(DBName, DBVersion);
+        console.log("openRequest:::", openRequest);
+        let res_val;
+        openRequest.onupgradeneeded = function(event) {
+            console.log("openRequest.onupgradeneeded");
+            console.log("event", event);
+            // срабатывает, если на клиенте нет базы данных // ...выполнить инициализацию...
+            let db = openRequest.result;
+            if (!db.objectStoreNames.contains('counters')) { // если хранилище "counters" не существует
+                db.createObjectStore('counters', {keyPath: 'id'}); // создаём хранилище
+            }
+            if (!db.objectStoreNames.contains('tablets')) {
+                db.createObjectStore('tablets', {keyPath: 'id'});
+            }
+            /* Чтобы удалить хранилище объектов:::*/
+            // db.deleteObjectStore('books')
 
-//             let transaction = MDB.transaction("counter", "readwrite");
-//             // получить хранилище объектов для работы с ним
-//             let counters = transaction.objectStore("counter");
-//             let counter = {
-//                 id: 1,
-//                 full: 100,
-//                 now: 100
-//             };
+            // switch(event.oldVersion) {
+            //     case 0:
+            //         // версия 0 означает, что на клиенте нет базы данных; выполнить инициализацию
+            //         db.createObjectStore('counters');
+            //         db.createObjectStore('tablets');
+            //         // let transaction = db.transaction("counter", "readwrite");
+            //         // // получить хранилище объектов для работы с ним
+            //         // let counters = transaction.objectStore("counter");
+            //         // let counter = {
+            //         //     id: 1,
+            //         //     full: 100,
+            //         //     now: 100
+            //         // };
+            //         // let request = counters.add(counter);
+                    
+            //         // request.onsuccess = function() {
+            //         //     console.log("Счетчик добавлен в хранилище", request.result);
+            //         // };
+            //         // request.onerror = function() {
+            //         //     console.log("Ошибка", request.error);
+            //         // };
 
-//             let request = counters.add(counter);
-//             request.onsuccess = function() {
-//                 console.log("Счетчик добавлен в хранилище", request.result);
-//             };
+            //         // break;
+            //         this.starter;
+            // }
+        };
+          
+        openRequest.onerror = function() {
+            console.error("Error", openRequest.error);
+        };
+          
+        openRequest.onsuccess = function() {
+            console.log("openRequest.onsuccess");
+            let db = openRequest.result;
+            // продолжить работу с базой данных, используя объект db
+            res_val = db;
+        };
+        
+        return res_val;
+    }
 
-//             request.onerror = function() {
-//                 console.log("Ошибка", request.error);
-//             };
+    addElem_counter() {
+        let openRequest = indexedDB.open(DBName, DBVersion);
+        openRequest.onsuccess = function() {
+            let db = openRequest.result;
+            let transaction = db.transaction("counters", "readwrite");
+            let counters = transaction.objectStore("counters");
+            
+            let newCounter = { id: '1', name: 'All'};
+            let request = counters.add(newCounter);
 
-//             break;
-//         // case 1:
-//         //     // на клиенте версия базы данных 1
-//         //     // обновить
-//     }
-// };
+            request.onsuccess = function() { // (4)
+                console.log("Добавлено", request.result);
+            };
+              
+            request.onerror = function() {
+                console.log("Ошибка", request.error);
+            };
+        };
+    }
 
-// openRequest.onerror = function() {
-//     console.error("Error", openRequest.error);
-// };
-  
-// openRequest.onsuccess = function() {
-//     MDB = openRequest.result;
-    
-//     MDB.onversionchange = function() {
-//         MDB.close();
-//         alert("База данных устарела, пожалуйста, перезагрузите страницу.")
-//     };
-    
-//     // продолжить работу с базой данных, используя объект db
-//     console.log('MDB', MDB);
-// };
+    getDB() {
+        // return [1, 2, 3];
+        let getResult = [];
+        let openRequest = indexedDB.open(DBName, DBVersion);
+        openRequest.onsuccess = function() {
+            let db = openRequest.result;
+            console.log("db", db);
+            let transaction = db.transaction("counters", "readonly");
 
-// openRequest.onblocked = function() {
-//     // это событие не должно срабатывать, если мы правильно обрабатываем onversionchange
-  
-//     // это означает, что есть ещё одно открытое соединение с той же базой данных
-//     // и он не был закрыт после того, как для него сработал db.onversionchange
-// };
+            try {
+                let counters = transaction.objectStore("counters");
+                console.log("counters", counters);
+                let getR = counters.get(1);
+                console.log("getR", getR);
+                
+                getResult = getR;
+                return getResult;
+            } catch(err) {
+                console.log("ERROR!!!", err.message);
+            }            
+        };
+        
+        // console.log("getResult", getResult);
+        // return getResult;
+    }
 
+    delDB() {
+        let delRequest = indexedDB.deleteDatabase(DBName);
+        console.log("delRequest");
+        
+        delRequest.onerror = function() {
+            console.log("delRequest.onerror");
+        };
+
+        delRequest.onsuccess = function() {
+            console.log("delRequest.onsuccess");
+        };
+    }
+}
+
+let MDB = new mdb();
 
 export default MDB;

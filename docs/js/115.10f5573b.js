@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkkgm"]=self["webpackChunkkgm"]||[]).push([[115],{1115:function(e,n,r){r.r(n),r.d(n,{default:function(){return l}});var u=r(6768);function a(e,n){return(0,u.uX)(),(0,u.CE)(u.FK,null,[n[0]||(n[0]=(0,u.eW)("- RULES - ")),n[1]||(n[1]=(0,u.Lk)("div",{class:"container rulesarea"}," rules ",-1))],64)}var s={name:"RulesView"},t=r(1241);const c=(0,t.A)(s,[["render",a]]);var l=c}}]);
+//# sourceMappingURL=115.10f5573b.js.map
