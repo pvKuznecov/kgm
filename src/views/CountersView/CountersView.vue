@@ -9,7 +9,8 @@ export default {
     data() {
         return {
             cdata: [
-                { title: 'Independent', info: 'Its a info text...' },
+                { title: 'Independent (1)', info: 'Its a info text...' },
+                { title: 'Independent (1+)', info: 'Its a info text...' },
                 { title: 'Monopoly', info: 'Its a info text...' },
             ]
         }

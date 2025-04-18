@@ -1,4 +1,4 @@
-.container.counterarea {
+.container.tabletarea {
     max-width: 95%;
     border-radius: 10px;
     margin-left: auto;
@@ -9,7 +9,7 @@
     padding: 1rem;
 }
 
-.counterElem {
+.tabletElem {
     border-radius: 5px;
     background-color: white;
     color: #2c3e50;
@@ -22,7 +22,7 @@
     box-shadow: 4px 4px 18px 3px rgba(34, 60, 80, 0.35);
 }
 
-.counterHeader {
+.tabletHeader {
     min-width: 100%;
     max-width: 100%;
     min-height: 20px;
@@ -36,7 +36,7 @@
 
 /* Устройства Small (телефоны с горизонтальной ориентацией, 576 пикселей и выше) */
 @media (max-width: 767px) {
-    .counterElem {
+    .tabletElem {
         min-width: 95%;
         max-width: 95%;
         margin-bottom: 1rem; }
@@ -44,7 +44,7 @@
 
 /* // Устройства Medium (планшеты, 768 пикселей и выше) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .counterElem {
+    .tabletElem {
         min-width: 45%;
         max-width: 45%;
         margin-bottom: 1rem; }
@@ -52,21 +52,21 @@
 
 /* // Устройства Large (настольные компьютеры, 992 пикселей и выше) */
 @media (min-width: 992px) and (max-width: 1199px) {
-    .counterElem {
+    .tabletElem {
         min-width: 45%;
         max-width: 45%; }
 }
 
 /* // Устройства X-Large (большие настольные компьютеры, 1200 пикселей и выше) */
 @media (min-width: 1200px) and (max-width: 1399px) {
-    .counterElem {
+    .tabletElem {
         min-width: 45%;
         max-width: 45%; }    
 }
 
 /* // Устройства XX-Large (большие настольные компьютеры, 1400 пикселей и выше) */
 @media (min-width: 1400px) {
-    .counterElem {
+    .tabletElem {
         min-width: 30%;
         max-width: 30%; }
 }
